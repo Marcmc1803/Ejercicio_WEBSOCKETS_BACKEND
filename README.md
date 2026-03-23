@@ -1,36 +1,22 @@
-# 🧑‍💻 Ejercicio Práctico: WebSockets con Node.js y Angular
+# Mòdul de Seguretat: JWT i Control de Rols (RBAC)
 
-Este repositorio contiene el código base para la sesión práctica sobre **WebSockets**. Aquí exploraremos la comunicación bidireccional en tiempo real entre un cliente (Angular) y un servidor (Node.js + Express + Socket.io).
+Aquest mòdul gestiona l'autenticació i l'autorització dels usuaris mitjançant JSON Web Tokens i la verificació de permisos al backend.
 
-Esta es la rama **`socket_io`**, que contiene la implementación base necesaria para que podáis arrancar con la parte del servidor y explorar cómo se integran los Sockets.
+## 📺 Vídeo de l'exercici
+Pots veure la demostració del funcionament aquí: [https://youtu.be/7Dqnf_b1mFQ](https://youtu.be/7Dqnf_b1mFQ)
 
----
+## 🛠️ Implementació Tècnica
+- **Backend:** Middleware `checkRole.ts` per protegir rutes d'administrador.
+- **Tokens:** Inclusió del camp `role` en el payload de l'Access Token i Refresh Token.
+- **Frontend:** Protecció de rutes amb `authGuard` i servei d'administració a Angular.
 
-## 🎯 Objetivo de la Clase
+## 🤖 Declaració d'ús d'IA Generativa
+**IA Generativa:** ChatGPT / Gemini (Google)
 
-En la aplicación de Chat con la que hemos estado trabajando, el objetivo de hoy es implementar diferentes funcionalidades interactivas en tiempo real:
-
-1. **Gestión de conexiones:** Detectar cuándo un usuario se conecta y desconecta.
-2. **Difusión de mensajes (Broadcast):** Un usuario envía un mensaje y *todos* los demás lo reciben al instante.
-3. **Lista de Usuarios Activos (Ejercicio Principal):** Mostrar una lista en tiempo real de quién está escribiendo o está conectado al chat en ese momento.
-
----
-
-## 🚀 ¿Qué incluye este código? (El Backend)
-
-En este proyecto de Node.js hemos preparado la estructura base para trabajar con `socket.io`. Los elementos clave que debéis revisar son:
-
-### 1. Inicialización de Sockets (`src/server.ts`)
-Observad cómo el servidor HTTP tradicional (creado con `express`) se "envuelve" con `socket.io` para poder escuchar tanto peticiones HTTP normales (GET/POST) como conexiones WebSocket.
-
-### 2. Archivos Clave
-- `package.json`: Fijaos que hemos añadido `socket.io` como dependencia.
-- Las mismas rutas y modelos de MongoDB (`Organizacion`, `Usuario`, `Mensaje`) que hemos estado usando, ya que WebSockets convive perfectamente con nuestra base de datos.
-
----
-
-## 🛠️ Ejercicio a realizar: Lista de Usuarios en el Chat
-
+**Parts del codi assistides per IA:**
+* **Disseny del Payload:** Utilitzada per definir l'estructura del token JWT que inclou el camp `role`, permetent una validació eficient sense consultes recurrents a la base de dades.
+* **Middleware de Verificació:** Guia en la creació del middleware `checkRole.ts` per gestionar correctament els permisos i retornar errors 403 (Accés denegat) de forma estandarditzada.
+* **Lògica de Rutes Protegides:** Assistència en la configuració de les rutes d'Angular per sincronitzar la validació del rol del client amb la del servidor.
 Vuestro trabajo consistirá en completar el flujo de información para que el Frontend (Angular) sepa en todo momento quién está conectado.
 
 ### Tareas en el Backend (Este repo)
